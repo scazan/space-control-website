@@ -28,9 +28,12 @@
 }
 
 .App video {
-  position: fixed;
-  top: 0;
-  left:0;
-  width: 100px;
-  height: 100px;
+  display: none;
+}
+
+.App canvas {
+  float: left;
+}
+.App canvas:nth-of-type(4n+1) {
+  clear: both;
 }
