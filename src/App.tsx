@@ -16,6 +16,7 @@ class App extends React.Component {
       this.renderCanvas(canvas.current.getContext('2d'), i)
     );
 
+    // TODO: This only works on the second load because we need to load the video before playing
     this.video.current.play();
   }
 
