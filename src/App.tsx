@@ -1,15 +1,16 @@
 import * as React from 'react';
+import Draggable from 'react-draggable';
 import './App.css';
 
 class App extends React.Component {
   private video: any;
-  private videoCanvas: any[];
+  private videoCanvases: any[];
   private videoBackgrounds: any[];
 
   public constructor(props:any) {
     super(props);
     this.videoBackgrounds = Array(20).fill(0);
-    this.videoCanvas = Array(20).fill(0).map( () => React.createRef() );
+    this.videoCanvases = Array(20).fill(0).map( () => React.createRef() );
     this.video = React.createRef();
 
     // Event Handler Binding
@@ -19,7 +20,7 @@ class App extends React.Component {
   public componentDidMount(): void {
     this.video.current.addEventListener('loadeddata', () => {
       this.setBackground();
-      this.videoCanvas.forEach( (canvas, i: any) =>
+      this.videoCanvases.forEach( (canvas, i: any) =>
         this.renderCanvas(canvas.current.getContext('2d'), i)
       );
 
@@ -29,7 +30,7 @@ class App extends React.Component {
 
   public setBackground() {
     const video = this.video.current;
-    this.videoCanvas.forEach( (canvas, i: any) => {
+    this.videoCanvases.forEach( (canvas, i: any) => {
       const context = canvas.current.getContext('2d');
       const imageData = context.getImageData(0, 0, video.videoWidth, video.videoHeight);
       this.videoBackgrounds[i] = imageData;
@@ -44,7 +45,7 @@ class App extends React.Component {
       const rowOffset = Math.floor(i/4) * (videoHeight/4);
 
       context.drawImage(video, 0+((i%4)*(videoWidth/4)), rowOffset, (videoWidth/4), (videoHeight/4), 0 , 0, 100, 100);
-      // const imageData = context.getImageData(0+((i%4)*(videoWidth/4)), rowOffset, (videoWidth/4), (videoHeight/4));
+
       const imageData = context.getImageData(0, 0, videoWidth, videoHeight);
       const canvasBackground = this.videoBackgrounds[i];
 
@@ -58,20 +59,17 @@ class App extends React.Component {
         const backgroundG = canvasBackground.data[k * 4 + 1];
         const backgroundB = canvasBackground.data[k * 4 + 2];
 
+        const differenceThreshold = 50;
         if(
-          Math.abs(backgroundR - r) <= 50
-          && Math.abs(backgroundG - g) <= 50
-          && Math.abs(backgroundB - b) <= 50
+          Math.abs(backgroundR - r) <= differenceThreshold
+          && Math.abs(backgroundG - g) <= differenceThreshold
+          && Math.abs(backgroundB - b) <= differenceThreshold
         ) {
           imageData.data[k*4+3] = 0;
-        }
-        else {
-          // imageData.data[k*4+3] = 200;
         }
       }
 
       context.putImageData(imageData, 0, 0);
-      // context.drawImage(video, 0, 0);
       setTimeout(loop, 1000/30);
     };
 
@@ -80,8 +78,8 @@ class App extends React.Component {
   }
   public render() {
 
-    const canvases = this.videoCanvas.map( ref => {
-      return <canvas key={ref} ref={ref} width="100" height="100"/>
+    const canvases = this.videoCanvases.map( ref => {
+      return <Draggable key="blah"><canvas key={ref} ref={ref} width="100" height="100"/></Draggable>
     });
 
     return (
