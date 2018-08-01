@@ -79,6 +79,7 @@ class App extends React.Component {
   public render() {
 
     const canvases = this.videoCanvases.map( ref => {
+      // TODO: Will fix these keys soon
       return <Draggable key="blah"><canvas key={ref} ref={ref} width="100" height="100"/></Draggable>
     });
 
