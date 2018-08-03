@@ -2,6 +2,11 @@ import * as React from 'react';
 import Draggable from 'react-draggable';
 import './App.css';
 
+const numRows = 2;
+const numColumns = 2;
+
+const canvasSize = 400;
+
 class App extends React.Component {
   private video: any;
   private videoCanvases: any[];
@@ -9,8 +14,8 @@ class App extends React.Component {
 
   public constructor(props:any) {
     super(props);
-    this.videoBackgrounds = Array(20).fill(0);
-    this.videoCanvases = Array(20).fill(0).map( () => React.createRef() );
+    this.videoBackgrounds = Array(numRows * numColumns).fill(0);
+    this.videoCanvases = Array(numRows * numColumns).fill(0).map( () => React.createRef() );
     this.video = React.createRef();
 
     // Event Handler Binding
@@ -20,6 +25,7 @@ class App extends React.Component {
   public componentDidMount(): void {
     this.video.current.addEventListener('loadeddata', () => {
       this.setBackground();
+
       this.videoCanvases.forEach( (canvas, i: any) =>
         this.renderCanvas(canvas.current.getContext('2d'), i)
       );
@@ -29,10 +35,12 @@ class App extends React.Component {
   }
 
   public setBackground() {
-    const video = this.video.current;
+     const video = this.video.current;
     this.videoCanvases.forEach( (canvas, i: any) => {
       const context = canvas.current.getContext('2d');
-      const imageData = context.getImageData(0, 0, video.videoWidth, video.videoHeight);
+      // CURRENTLY THE ISSUE WITH SUBTRACTION. CANVAS.CURRENT.WIDTH as opposed to videoWidth
+      const imageData = context.getImageData(0, 0, canvas.current.width, canvas.current.height);
+      //const imageData = context.getImageData(0, 0, video.videWidth, video.videoHeight);
       this.videoBackgrounds[i] = imageData;
     });
   }
@@ -42,14 +50,15 @@ class App extends React.Component {
       const video = this.video.current;
       const videoWidth = video.videoWidth;
       const videoHeight = video.videoHeight;
-      const rowOffset = Math.floor(i/4) * (videoHeight/4);
+      const rowOffset = Math.floor(i/numRows) * (videoHeight/numRows);
 
-      context.drawImage(video, 0+((i%4)*(videoWidth/4)), rowOffset, (videoWidth/4), (videoHeight/4), 0 , 0, 100, 100);
+      // context.drawImage(video, 0+((i%numColumns)*(videoWidth/numColumns)), rowOffset, (videoWidth/numColumns), (videoHeight/numRows), 0 , 0, canvasSize, canvasSize);
+      context.drawImage(video, 0+((i%numColumns)*(videoWidth/numColumns)), rowOffset, (videoWidth/numColumns), (videoHeight/numRows), 0, 0, canvasSize, canvasSize);
 
       const imageData = context.getImageData(0, 0, videoWidth, videoHeight);
       const canvasBackground = this.videoBackgrounds[i];
 
-      const imageDataLength = imageData.data.length / 4;
+      const imageDataLength = imageData.data.length / 4; // 4 = serial RGBA
       for( let k=0; k < imageDataLength; k++) {
         const r = imageData.data[k * 4 + 0];
         const g = imageData.data[k * 4 + 1];
@@ -80,7 +89,7 @@ class App extends React.Component {
 
     const canvases = this.videoCanvases.map( ref => {
       // TODO: Will fix these keys soon
-      return <Draggable key="blah"><canvas key={ref} ref={ref} width="100" height="100"/></Draggable>
+      return <Draggable key="blah"><canvas key={ref} ref={ref} width={canvasSize} height={canvasSize}/></Draggable>
     });
 
     return (
