@@ -5,8 +5,8 @@ import './App.css';
 const numRows = 2;
 const numColumns = 2;
 
-const canvasWidth = 320;
-const canvasHeight = 240;
+const canvasWidth = 640;
+const canvasHeight = 480;
 
 class App extends React.Component {
   private video: any;
@@ -29,6 +29,7 @@ class App extends React.Component {
   public componentDidMount(): void {
     this.video.current.addEventListener('loadeddata', () => {
       this.setBackground();
+      setTimeout(this.setBackground, 500);
 
 
       this.video.current.play();
@@ -47,8 +48,8 @@ class App extends React.Component {
 
         const imageData = context.getImageData(0, 0, videoWidth, videoHeight);
         const canvasBackground = this.videoBackground;
-        //console.log(imageData.data.length, canvasBackground.data.length);
 
+        // Subtract the stored background
         const imageDataLength = imageData.data.length / 4; // 4 = serial RGBA
         for( let k=0; k < imageDataLength; k++) {
           const r = imageData.data[k * 4 + 0];
@@ -72,7 +73,7 @@ class App extends React.Component {
         context.putImageData(imageData, 0, 0);
 
         this.videoCanvases.forEach( (canvas, i: any) =>
-          this.renderCanvas(canvas.current.getContext('2d'), i)
+          this.renderCanvas(canvas, i)
         );
 
         setTimeout(renderLoop, 1000/30);
@@ -97,32 +98,31 @@ class App extends React.Component {
     //});
   }
 
-  public renderCanvas(context: any, i: any) {
+  public renderCanvas(canvas: any, i: any) {
 
     const source = this.sourceCanvas.current;
-      const rowOffset = Math.floor(i/numRows) * (source.height/numRows);
-      //context.drawImage(video, 0+((i%numColumns)*(videoWidth/numColumns)), rowOffset, (videoWidth/numColumns), (videoHeight/numRows), 0, 0, canvasSize, canvasSize);
+    const context = canvas.current.getContext('2d');
+    const rowOffset = Math.floor(i/numRows) * (source.height/numRows);
 
-      // context.drawImage(video, 0+((i%numColumns)*(videoWidth/numColumns)), rowOffset, (videoWidth/numColumns), (videoHeight/numRows), 0 , 0, canvasSize, canvasSize);
-      context.drawImage(source, 0+((i%numColumns)*(source.width/numColumns)), rowOffset, (source.width/numColumns), (source.height/numRows), 0, 0, canvasWidth/numColumns, canvasHeight/numRows);
-
+    context.clearRect(0,0, canvas.current.width, canvas.current.height);
+    context.drawImage(source, 0+((i%numColumns)*(source.width/numColumns)), rowOffset, (source.width/numColumns), (source.height/numRows), 0, 0, canvasWidth/numColumns, canvasHeight/numRows);
 
   }
   public render() {
 
-    const canvases = this.videoCanvases.map( ref => {
+    const canvases = this.videoCanvases.map( ( ref, i ) => {
       // TODO: Will fix these keys soon
-      return <Draggable key="blah"><canvas key={ref} ref={ref} width={canvasWidth / numColumns} height={canvasHeight / numRows}/></Draggable>
+      return <Draggable key={i*30}><canvas key={i} ref={ref} width={canvasWidth / numColumns} height={canvasHeight / numRows}/></Draggable>
     });
 
     return (
       <div className="App">
       <button onClick={this.setBackground}>take background</button>
-        <video controls={ true } ref={ this.video }>
+        <video controls={ true } loop={true} ref={ this.video }>
           <source src="/video/test.webm" type="video/webm"/>
         </video>
 
-      <canvas ref={this.sourceCanvas} width={canvasWidth} height={canvasHeight} />
+      <canvas className="sourceCanvas" ref={this.sourceCanvas} width={canvasWidth} height={canvasHeight} />
 
       {
         canvases
