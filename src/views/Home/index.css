@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family=Aldrich|Allerta+Stencil|Armata|Audiowide|Bellefair|Bungee+Inline|Carme|Chakra+Petch|Changa|Chivo|Days+One|Electrolize|Iceland|Keania+One|KoHo|Kodchasan|Michroma|Monoton|NTR|Nanum+Myeongjo|Nova+Round|Poiret+One|Press+Start+2P|Proza+Libre|Quantico|Rajdhani|Russo+One|Saira+Semi+Condensed|Share+Tech+Mono|Unica+One|VT323|Wallpoet&display=swap');
+
+body {
+  background-color: #EEE;
+}
+body.active {
+  background-image: url(./images/back_email.jpg);
+  background-repeat: none;
+  background-size: cover;
+}
+
+.home {
+  position: relative;
+  /* z-index: -200; */
+  height: 100vh;
+  width: 100vw;
+  /* margin: 50px; */
+  padding-top: 11vh;
+  padding-bottom: 200px;
+  /* padding-left: 11vh; */
+
+  /* background-color: #ff9968; */
+  color: #333;
+  text-transform: lowercase;
+
+  font-family: 'Russo One', sans-serif;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 3vh;
+}
+.home a {
+  text-decoration: none;
+  color: #333;
+}
+
+.home h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 8vh;
+  margin-bottom: 50px;
+
+  /* font-family: 'Russo One', sans-serif; */
+  /* font-family: 'Poiret One', cursive; */
+  /* font-family: 'Armata', sans-serif; */
+  /* font-family: 'Audiowide', cursive; */
+  /* font-family: 'Allerta Stencil', sans-serif; */
+  /* font-family: 'Days One', sans-serif; */
+  /* font-family: 'Michroma', sans-serif; [> GOOD <] */
+  /* font-family: 'Electrolize', sans-serif; */
+  /* font-family: 'Aldrich', sans-serif; */
+  /* font-family: 'Carme', sans-serif; *//* GOOD */
+  /* font-family: 'Bungee Inline', cursive; */
+  font-family: 'Proza Libre', sans-serif; /* GOOD
+  /* font-family: 'Kodchasan', sans-serif; */
+  /* font-family: 'KoHo', sans-serif; */
+
+  vertical-align: middle;
+  line-height: normal;
+  letter-spacing: -0.05em;
+  font-weight: normal;
+}
+
+.home h2 {
+  font-weight: normal;
+  font-size: 5vh;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.home .info {
+  display: flex;
+  /* width: 24vw; */
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+
+.home .info p {
+  margin: 0;
+  padding: 25px;
+  /* padding-left: 0; */
+}
+
+.home .tickets {
+  text-align: center;
+
+  border: 1px dotted #333;
+  border-radius: 200px;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  margin-bottom: 200px;
+}
+.home .tickets a {
+  position: relative;
+  top: 79px;
+}
+.home .tickets:hover {
+  background: linear-gradient(-36deg, rgba(255,108,82,1) 14%, rgba(255,188,93,1) 100%);
+}
+
+.home .backing {
+  /* display: none; */
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -100;
+}
+

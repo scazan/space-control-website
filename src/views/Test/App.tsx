@@ -119,7 +119,7 @@ class App extends React.Component {
       <div className="App">
       <button onClick={this.setBackground}>take background</button>
         <video controls={ true } loop={true} ref={ this.video }>
-          <source src="/video/test.webm" type="video/webm"/>
+          <source src="/video/test.webm" type="video/youtube"/>
         </video>
 
       <canvas className="sourceCanvas" ref={this.sourceCanvas} width={canvasWidth} height={canvasHeight} />
