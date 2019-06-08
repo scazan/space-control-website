@@ -1,15 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './views/Home/index';
+import LiveStream from './views/LiveStream/index';
 import './index.css';
 // import registerServiceWorker from './registerServiceWorker';
 
 const routing = (
   <Router>
-    <div>
+    <Switch>
+      <Route path="/stream" component={ LiveStream } />
       <Route path="/" component={ Home } />
-    </div>
+    </Switch>
   </Router>
 );
 

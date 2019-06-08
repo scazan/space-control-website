@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import Draggable from 'react-draggable';
 import { Scene,
   PlaneBufferGeometry,
   MeshBasicMaterial,
@@ -67,10 +66,6 @@ const updateMouseFollower = () => {
 };
 
 class Home extends React.Component {
-  public constructor(props) {
-    super(props);
-  }
-
   public componentDidMount() {
     document.body.onmouseover = followMousePosition;
     const scene = new Scene();
