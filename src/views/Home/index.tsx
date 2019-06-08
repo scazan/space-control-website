@@ -20,17 +20,24 @@ import vertexShader from './vert.js';
 import './index.css';
 
 let followMouse = false;
+let timeout: any;
 const planets: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
 const onHover = () => {
   if(!followMouse) {
-    document.body.classList.add('active');
 
-    planets.current && (planets.current.style.position = 'fixed');
-    document.body.style.paddingBottom = '170px';
-    followMouse = true;
+    timeout = setTimeout(() => {
+      document.body.classList.add('active');
+
+      planets.current && (planets.current.style.position = 'fixed');
+      document.body.style.paddingBottom = '170px';
+      followMouse = true;
+    }, 300);
   }
 };
 const onHoverOut = () => {
+  if(timeout) {
+    clearTimeout(timeout);
+  }
   // document.body.classList.remove('active');
 };
 
@@ -126,7 +133,12 @@ class Home extends React.Component {
       <div className="home">
 
         <h2>Object Collection</h2>
-        <img className="albumCover" src={albumFrontImage}/>
+        <img
+          className="albumCover"
+          src={albumFrontImage}
+          onMouseOver={onHover}
+          onMouseOut={onHoverOut}
+        />
         <h1>You Are Under Our Space Control</h1>
 
         <div className="info">

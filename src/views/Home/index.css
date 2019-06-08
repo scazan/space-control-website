@@ -17,6 +17,20 @@ body.active {
 
   border: 1px solid rgba(0,0,0,0.18);
 }
+.albumCover:hover,
+.tickets:hover {
+  box-shadow: 2px -2px 153px #ff6c52,
+  -2px 2px 153px #ff6c52,
+  2px 2px 153px #ff6c52,
+  -2px -2px 153px #ff6c52;
+  transition: 1s;
+}
+
+body.active .albumCover:hover,
+body.active .tickets:hover {
+  box-shadow: none;
+  transition: none;
+}
 
 .home {
   position: relative;
