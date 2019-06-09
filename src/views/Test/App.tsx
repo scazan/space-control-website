@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Draggable from 'react-draggable';
+import imageThing from '../Home/images/album_front.jpg';
 import './App.css';
 
 const numRows: number = 2;
@@ -28,8 +29,8 @@ class App extends React.Component {
 
   public componentDidMount(): void {
     this.video.current.addEventListener('loadeddata', () => {
-      this.setBackground();
-      setTimeout(this.setBackground, 500);
+      // this.setBackground();
+      // setTimeout(this.setBackground, 500);
 
 
       this.video.current.play();
@@ -46,6 +47,7 @@ class App extends React.Component {
 
         context.drawImage(video, 0, 0, videoWidth, videoHeight);
 
+        /*
         const imageData = context.getImageData(0, 0, videoWidth, videoHeight);
         const canvasBackground = this.videoBackground;
 
@@ -71,6 +73,7 @@ class App extends React.Component {
         }
 
         context.putImageData(imageData, 0, 0);
+         */
 
         this.videoCanvases.forEach( (canvas, i: any) =>
           this.renderCanvas(canvas, i)
@@ -119,7 +122,7 @@ class App extends React.Component {
       <div className="App">
       <button onClick={this.setBackground}>take background</button>
         <video controls={ true } loop={true} ref={ this.video }>
-          <source src="/video/test.webm" type="video/youtube"/>
+          <source src="/video/test.webm" type="video/webm"/>
         </video>
 
       <canvas className="sourceCanvas" ref={this.sourceCanvas} width={canvasWidth} height={canvasHeight} />
