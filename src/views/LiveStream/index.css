@@ -1,2 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Carme|Proza+Libre|Rajdhani&display=swap');
 
+
+.liveStream .sourceCanvas {
+  display: none;
+}

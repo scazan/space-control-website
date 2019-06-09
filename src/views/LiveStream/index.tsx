@@ -2,21 +2,15 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Draggable from 'react-draggable';
 import jsmpeg from 'jsmpeg';
-import imageThing from '../Home/images/album_front.jpg';
 
 import './index.css';
 
 const numRows: number = 2;
 const numColumns: number = 2;
-
 const canvasWidth: number = 240;
 const canvasHeight: number = 160;
 
-      const newImage = new Image();
-      newImage.src = imageThing;
-
 class LiveStream extends React.Component {
-  private video: any;
   private videoCanvases: any[];
   private videoBackgrounds: any[];
   private videoBackground: any;
@@ -27,16 +21,15 @@ class LiveStream extends React.Component {
 
     this.videoBackgrounds = Array(numRows * numColumns).fill(0);
     this.videoCanvases = Array(numRows * numColumns).fill(0).map( () => React.createRef() );
-    this.video = React.createRef();
     this.sourceCanvas = React.createRef();
   }
 
   public componentDidMount() {
     const client = new WebSocket('ws://localhost:9999');
     const player = new jsmpeg(client, {
+      forceCanvas2D: true,
       canvas: this.sourceCanvas.current,
     });
-
 
     const renderLoop = () => {
       if(this.sourceCanvas.current) {
@@ -45,8 +38,7 @@ class LiveStream extends React.Component {
         );
       }
 
-      // setTimeout(renderLoop, 1000/30);
-      setTimeout(renderLoop, 1000/10);
+      window.requestAnimationFrame(renderLoop);
     };
 
     renderLoop();
@@ -56,17 +48,16 @@ class LiveStream extends React.Component {
   public renderCanvas(canvas: any, i: any) {
     if(canvas.current) {
       const source = this.sourceCanvas.current;
+
       const context = canvas.current.getContext('2d');
       const rowOffset = Math.floor(i/numRows) * (source.height/numRows);
 
       context.clearRect(0,0, canvas.current.width, canvas.current.height);
       context.drawImage(source, 0+((i%numColumns)*(source.width/numColumns)), rowOffset, (source.width/numColumns), (source.height/numRows), 0, 0, canvasWidth/numColumns, canvasHeight/numRows);
-      // context.drawImage(newImage, 0+((i%numColumns)*(source.width/numColumns)), rowOffset, (source.width/numColumns), (source.height/numRows), 0, 0, canvasWidth/numColumns, canvasHeight/numRows);
     }
   }
 
   public render() {
-
     const canvases = this.videoCanvases.map( ( ref, i ) => {
       // TODO: Will fix these keys soon
       return (
@@ -79,10 +70,15 @@ class LiveStream extends React.Component {
     return (
       <div className="liveStream">
 
-        <h2>Object Collection</h2>
         <h1>You Are Under Our Space Control</h1>
 
-        <canvas ref={this.sourceCanvas} width={canvasWidth} height={canvasHeight}/>
+        <canvas
+          className="sourceCanvas"
+          ref={this.sourceCanvas}
+          width={canvasWidth}
+          height={canvasHeight}
+        />
+
         {canvases}
       </div>
     );
