@@ -1,6 +1,41 @@
 @import url('https://fonts.googleapis.com/css?family=Carme|Proza+Libre|Rajdhani&display=swap');
 
 
+body {
+  background-color: #DDD;
+  margin: 25px;
+}
+
+.liveStream {
+  width: 100%;
+}
+
+.liveStream .showTitle {
+  position: fixed;
+  margin: 50px;
+
+  color: rgba(255,255,255,0.15);
+  font-family: 'Rajdhani';
+  font-size: 16vh;
+  text-transform: uppercase;
+  letter-spacing: 0.8em;
+}
+
 .liveStream .sourceCanvas {
   display: none;
+}
+
+.liveStream .cameraCanvas {
+  width: 400px;
+}
+
+.liveStream .textArea {
+  position: fixed;
+  top: 500px;
+  left: 1190px;
+  width: 350px;
+  font-family: 'Carme';
+  font-size: 32px;
+  color: rgba(1,1,1,0.5);
+  text-align: right;
 }

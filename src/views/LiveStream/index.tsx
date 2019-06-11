@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Draggable from 'react-draggable';
 import jsmpeg from 'jsmpeg';
 
+import 'normalize.css';
 import './index.css';
 
 const numRows: number = 2;
@@ -62,7 +63,13 @@ class LiveStream extends React.Component {
       // TODO: Will fix these keys soon
       return (
         <Draggable key={i*30}>
-          <canvas key={i} ref={ref} width={canvasWidth} height={canvasHeight}/>
+          <canvas
+            key={i}
+            ref={ref}
+            width={canvasWidth}
+            height={canvasHeight}
+            className="cameraCanvas"
+          />
         </Draggable>
       );
     });
@@ -70,7 +77,7 @@ class LiveStream extends React.Component {
     return (
       <div className="liveStream">
 
-        <h1>You Are Under Our Space Control</h1>
+        <h1 className="showTitle">You Are Under Our Space Control</h1>
 
         <canvas
           className="sourceCanvas"
@@ -80,6 +87,11 @@ class LiveStream extends React.Component {
         />
 
         {canvases}
+        <Draggable>
+          <section className="textAreaOne textArea">
+            THis is where I may see some of the poetry type of pieces being executed
+          </section>
+        </Draggable>
       </div>
     );
   }
