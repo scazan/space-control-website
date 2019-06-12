@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import Draggable from 'react-draggable';
+import { Rnd }  from 'react-rnd';
 import jsmpeg from 'jsmpeg';
 
 import 'normalize.css';
@@ -62,7 +62,10 @@ class LiveStream extends React.Component {
     const canvases = this.videoCanvases.map( ( ref, i ) => {
       // TODO: Will fix these keys soon
       return (
-        <Draggable key={i*30}>
+        <Rnd
+          key={i*30}
+          lockAspectRatio={true}
+        >
           <canvas
             key={i}
             ref={ref}
@@ -70,7 +73,7 @@ class LiveStream extends React.Component {
             height={canvasHeight}
             className="cameraCanvas"
           />
-        </Draggable>
+        </Rnd>
       );
     });
 
@@ -87,11 +90,11 @@ class LiveStream extends React.Component {
         />
 
         {canvases}
-        <Draggable>
+        <Rnd>
           <section className="textAreaOne textArea">
-            THis is where I may see some of the poetry type of pieces being executed
+            this is where I may see some of the word type of pieces being executed
           </section>
-        </Draggable>
+        </Rnd>
       </div>
     );
   }
