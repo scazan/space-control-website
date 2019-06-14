@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Carme|Proza+Libre|Rajdhani&display=swap');
 
-
 body {
-  background-color: #DDD;
+  background-color: #000;
   margin: 25px;
 }
 
@@ -37,6 +36,6 @@ body {
   width: 350px;
   font-family: 'Carme';
   font-size: 32px;
-  color: rgba(1,1,1,0.5);
+  color: rgba(255, 255, 255,0.5);
   text-align: right;
 }
