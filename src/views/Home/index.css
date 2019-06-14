@@ -102,7 +102,7 @@ body.active .home {
   /* width: 24vw; */
   justify-content: center;
   margin: 0 auto;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   margin-top: 100px;
 }
 
@@ -124,7 +124,7 @@ body.active .home {
 }
 .home .tickets a {
   position: relative;
-  top: 68px;
+  top: 74px;
 }
 body.active .home .tickets {
   background: linear-gradient(-36deg, rgba(255,108,82,1) 14%, rgba(255,188,93,1) 100%);
@@ -169,4 +169,10 @@ body.active .home .tickets {
 
 body.active .home .backing {
   display: block;
+}
+
+.discountCode {
+  margin: 0 auto;
+  width: 300px;
+  margin-bottom: 50px;
 }

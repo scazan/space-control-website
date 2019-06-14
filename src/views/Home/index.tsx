@@ -142,15 +142,20 @@ class Home extends React.Component {
           <p>Saturday<br/>June 22<br/>7:30pm</p>
         </div>
 
-        <a href="//web.ovationtix.com/trs/pr/1012213" target="_blank">
-        <div className="tickets"
-          onMouseOver={onHover}
-          onMouseOut={onHoverOut}
-          ref={planets}
-        >
-          <a href="https://web.ovationtix.com/trs/pr/1012213" target="_blank">Tickets</a>
+        <div className="discountCode">
+          <p>use code 'presale' for $5 off advance tickets</p>
         </div>
-      </a>
+
+        <a href="//web.ovationtix.com/trs/pr/1012213" target="_blank">
+          <div className="tickets"
+            onMouseOver={onHover}
+            onMouseOut={onHoverOut}
+            ref={planets}
+          >
+            <a href="https://web.ovationtix.com/trs/pr/1012213" target="_blank">Tickets</a>
+          </div>
+        </a>
+
 
         <div className="backing">
         </div>

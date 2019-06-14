@@ -65,12 +65,18 @@ class LiveStream extends React.Component {
         <Rnd
           key={i*30}
           lockAspectRatio={true}
+          default={{
+            x: Math.random() * 500,
+            y: Math.random() * 500,
+              width: canvasWidth / numRows,
+            height: canvasHeight / numColumns,
+          }}
         >
           <canvas
             key={i}
             ref={ref}
-            width={canvasWidth}
-            height={canvasHeight}
+            width={canvasWidth / numRows}
+            height={canvasHeight / numColumns}
             className="cameraCanvas"
           />
         </Rnd>
