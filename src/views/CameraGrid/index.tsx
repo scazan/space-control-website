@@ -13,6 +13,8 @@ class CameraGrid extends React.Component {
   private sourceCanvas: any;
   private camera2Canvas: any;
   private camera3Canvas: any;
+  private camera4Canvas: any;
+  private camera5Canvas: any;
 
   constructor(props) {
     super(props);
@@ -20,6 +22,8 @@ class CameraGrid extends React.Component {
     this.sourceCanvas = React.createRef();
     this.camera2Canvas = React.createRef();
     this.camera3Canvas = React.createRef();
+    this.camera4Canvas = React.createRef();
+    this.camera5Canvas = React.createRef();
   }
 
   public componentDidMount() {
@@ -34,13 +38,17 @@ class CameraGrid extends React.Component {
 
     player.volume = 0.8;
     const player2 = new jsmpeg(client2, {
-      // forceCanvas2D: true,
       canvas: this.camera2Canvas.current,
     });
     const player3 = new jsmpeg(client3, {
-      // forceCanvas2D: true,
       canvas: this.camera3Canvas.current,
     });
+    // const player4 = new jsmpeg(client2, {
+      // canvas: this.camera4Canvas.current,
+    // });
+    // const player5 = new jsmpeg(client3, {
+      // canvas: this.camera5Canvas.current,
+    // });
   }
 
   public render() {
@@ -51,8 +59,8 @@ class CameraGrid extends React.Component {
           default={{
             x: Math.random() * 500,
               y: Math.random() * 500,
-              width: canvasWidth,
-              height: canvasHeight,
+              width: canvasWidth/4,
+              height: canvasHeight/4,
           }}
         >
           <canvas
@@ -67,8 +75,8 @@ class CameraGrid extends React.Component {
           default={{
             x: Math.random() * 500,
               y: Math.random() * 500,
-              width: canvasWidth,
-              height: canvasHeight,
+              width: canvasWidth/4,
+              height: canvasHeight/4,
           }}
         >
           <canvas
@@ -84,8 +92,8 @@ class CameraGrid extends React.Component {
           default={{
             x: Math.random() * 500,
               y: Math.random() * 500,
-              width: canvasWidth,
-              height: canvasHeight,
+              width: canvasWidth/4,
+              height: canvasHeight/4,
           }}
         >
           <canvas
@@ -95,6 +103,7 @@ class CameraGrid extends React.Component {
             height={canvasHeight}
           />
         </Rnd>
+
       </div>
     );
   }
