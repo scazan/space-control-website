@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './views/Home/index';
 import LiveStream from './views/LiveStream/index';
+import CameraGrid from './views/CameraGrid/index';
 import Test from './views/Test/App';
 import './index.css';
 // import registerServiceWorker from './registerServiceWorker';
@@ -10,6 +11,7 @@ import './index.css';
 const routing = (
   <Router>
     <Switch>
+      <Route path="/grid" component={ CameraGrid } />
       <Route path="/stream" component={ LiveStream } />
       <Route path="/test" component={ Test } />
       <Route path="/" component={ Home } />

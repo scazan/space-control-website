@@ -17,7 +17,7 @@
   },
   "scripts": {
     "dev": "react-scripts-ts start",
-    "start": "serve -s build",
+    "start": "serve -s ~/dev/markov-sequencer/build",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",

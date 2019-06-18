@@ -13,14 +13,11 @@ const canvasHeight: number = 160;
 
 class LiveStream extends React.Component {
   private videoCanvases: any[];
-  private videoBackgrounds: any[];
-  private videoBackground: any;
   private sourceCanvas: any;
 
   constructor(props) {
     super(props);
 
-    this.videoBackgrounds = Array(numRows * numColumns).fill(0);
     this.videoCanvases = Array(numRows * numColumns).fill(0).map( () => React.createRef() );
     this.sourceCanvas = React.createRef();
   }
@@ -31,6 +28,7 @@ class LiveStream extends React.Component {
       forceCanvas2D: true,
       canvas: this.sourceCanvas.current,
     });
+    player.volume = 0.8;
 
     const renderLoop = () => {
       if(this.sourceCanvas.current) {
@@ -54,7 +52,9 @@ class LiveStream extends React.Component {
       const rowOffset = Math.floor(i/numRows) * (source.height/numRows);
 
       context.clearRect(0,0, canvas.current.width, canvas.current.height);
-      context.drawImage(source, 0+((i%numColumns)*(source.width/numColumns)), rowOffset, (source.width/numColumns), (source.height/numRows), 0, 0, canvasWidth/numColumns, canvasHeight/numRows);
+      if (canvas.width <= 0) {
+        context.drawImage(source, 0+((i%numColumns)*(source.width/numColumns)), rowOffset, (source.width/numColumns), (source.height/numRows), 0, 0, canvasWidth/numColumns, canvasHeight/numRows);
+      }
     }
   }
 

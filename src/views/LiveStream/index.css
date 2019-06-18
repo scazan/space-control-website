@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Carme|Proza+Libre|Rajdhani&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Aldrich|Allerta+Stencil|Armata|Audiowide|Bellefair|Bungee+Inline|Carme|Chakra+Petch|Changa|Chivo|Days+One|Electrolize|Iceland|Keania+One|KoHo|Kodchasan|Michroma|Monoton|NTR|Nanum+Myeongjo|Nova+Round|Poiret+One|Press+Start+2P|Proza+Libre|Quantico|Rajdhani|Russo+One|Saira+Semi+Condensed|Share+Tech+Mono|Unica+One|VT323|Wallpoet&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Carme|Proza+Libre|Rajdhani&display=swap'); */
 
 body {
-  background-color: #000;
+  background-color: #DDD;
   margin: 25px;
 }
 
@@ -15,6 +16,13 @@ body {
 
   color: rgba(255,255,255,0.15);
   font-family: 'Rajdhani';
+
+/* font-family: 'Russo One', sans-serif; */
+  /* font-family: 'Poiret One', cursive; */
+  /* font-family: 'Audiowide', cursive; */
+
+
+
   font-size: 16vh;
   text-transform: uppercase;
   letter-spacing: 0.8em;
@@ -36,6 +44,27 @@ body {
   width: 350px;
   font-family: 'Carme';
   font-size: 32px;
-  color: rgba(255, 255, 255,0.5);
+  /* color: rgba(255, 255, 255,0.5); */
+  color: rgba(1,1,1,0.15);
   text-align: right;
+
+
+
+  /* font-family: 'Rajdhani'; */
+
+/* font-family: 'Russo One', sans-serif; */
+  font-family: 'Poiret One', cursive;
+  /* font-family: 'Armata', sans-serif; */
+  /* font-family: 'Audiowide', cursive; */
+  /* font-family: 'Allerta Stencil', sans-serif; */
+  /* font-family: 'Days One', sans-serif; */
+  /* font-family: 'Michroma', sans-serif; [> GOOD <] */
+  /* font-family: 'Electrolize', sans-serif; */
+  /* font-family: 'Aldrich', sans-serif; */
+  /* font-family: 'Carme', sans-serif; *//* GOOD */
+  /* font-family: 'Bungee Inline', cursive; */
+  /* font-family: 'Proza Libre', sans-serif; /* GOOD */
+  font-family: 'Kodchasan', sans-serif;
+  font-family: 'KoHo', sans-serif;
+
 }
