@@ -2,19 +2,20 @@
 /* @import url('https://fonts.googleapis.com/css?family=Carme|Proza+Libre|Rajdhani&display=swap'); */
 
 body {
-  background-color: #DDD;
   margin: 25px;
 }
 
 .liveStream {
   width: 100%;
+  background-color: #f3ff5a;
+  height: 100vh;
 }
 
 .liveStream .showTitle {
   position: fixed;
   margin: 50px;
 
-  color: rgba(255,255,255,0.15);
+  color: rgba(0,0,0,0.15);
   font-family: 'Rajdhani';
 
 /* font-family: 'Russo One', sans-serif; */
@@ -26,10 +27,6 @@ body {
   font-size: 16vh;
   text-transform: uppercase;
   letter-spacing: 0.8em;
-}
-
-.liveStream .sourceCanvas {
-  display: none;
 }
 
 .liveStream .cameraCanvas {
