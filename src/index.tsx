@@ -7,6 +7,8 @@ import CameraGrid from './views/CameraGrid/index';
 import Test from './views/Test/App';
 import './index.css';
 // import registerServiceWorker from './registerServiceWorker';
+// Setup Array shuffling prototype
+
 
 const routing = (
   <Router>

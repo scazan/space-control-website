@@ -1,0 +1,24 @@
+
+.scoreThree {
+  font-size: 16px;
+  color: #rgba(60,60,60,0.75);
+}
+
+.scoreThree .play {
+  background: transparent;
+  border: none;
+  user-select: none;
+  cursor: crosshair;
+
+  font-size: 24px;
+}
+.scoreThree .play.active {
+  display: none;
+}
+
+.scoreThree .text {
+  display: none;
+}
+.scoreThree .text.active {
+  display: block;
+}

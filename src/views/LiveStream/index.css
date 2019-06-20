@@ -7,50 +7,14 @@ body {
 
 .liveStream {
   width: 100%;
-  background-color: #f3ff5a;
   height: 100vh;
-}
 
-.liveStream .showTitle {
-  position: fixed;
-  margin: 50px;
-
-  color: rgba(0,0,0,0.15);
-  font-family: 'Rajdhani';
-
-/* font-family: 'Russo One', sans-serif; */
-  /* font-family: 'Poiret One', cursive; */
-  /* font-family: 'Audiowide', cursive; */
-
-
-
-  font-size: 16vh;
-  text-transform: uppercase;
-  letter-spacing: 0.8em;
-}
-
-.liveStream .cameraCanvas {
-  width: 100%;
-  height: 100%;
-}
-
-.liveStream .textArea {
-  position: fixed;
-  top: 500px;
-  left: 1190px;
-  width: 350px;
-  font-family: 'Carme';
-  font-size: 32px;
-  /* color: rgba(255, 255, 255,0.5); */
-  color: rgba(1,1,1,0.15);
-  text-align: right;
-
-
+  background-color: #333;
 
   /* font-family: 'Rajdhani'; */
 
 /* font-family: 'Russo One', sans-serif; */
-  font-family: 'Poiret One', cursive;
+  /* font-family: 'Poiret One', cursive; */
   /* font-family: 'Armata', sans-serif; */
   /* font-family: 'Audiowide', cursive; */
   /* font-family: 'Allerta Stencil', sans-serif; */
@@ -61,7 +25,80 @@ body {
   /* font-family: 'Carme', sans-serif; *//* GOOD */
   /* font-family: 'Bungee Inline', cursive; */
   /* font-family: 'Proza Libre', sans-serif; /* GOOD */
-  font-family: 'Kodchasan', sans-serif;
+  /* font-family: 'Kodchasan', sans-serif; */
   font-family: 'KoHo', sans-serif;
+  /* font-family: 'Carme'; */
+  font-size: 24px;
+}
 
+.liveStream .showTitle {
+  position: fixed;
+  margin: 50px;
+  margin-top: 0px;
+
+  color: rgba(0,0,0,0.15);
+  font-family: 'Rajdhani';
+
+/* font-family: 'Russo One', sans-serif; */
+  font-family: 'Poiret One', cursive;
+  /* font-family: 'Audiowide', cursive; */
+
+
+
+  font-size: 16vh;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  line-height: 1.9em;
+}
+
+.liveStream .camera {
+  width: 100%;
+  height: 100%;
+}
+
+.liveStream .textArea {
+  position: fixed;
+  top: 200px;
+  left: 590px;
+  width: 350px;
+  text-align: right;
+}
+
+.liveStream .instructionOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(255,1,255,0.25);
+
+  color: #DDD;
+}
+.liveStream .instructionOverlay.hidden {
+  display: none;
+}
+
+.liveStream .instructionOverlay .info {
+  position: relative;
+  top: 15vh;
+  margin: 0 auto;
+  width: 300px;
+
+  text-align: center;
+  line-height: 1.5em;
+  letter-spacing: 0.15em;
+}
+
+.liveStream .instructionOverlay .info .start {
+  background-color: transparent;
+  border: 1px dotted #DDD;
+  padding: 25px;
+  margin-top: 50px;
+
+  color: #DDD;
+  line-height: 1.5em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
