@@ -57,7 +57,6 @@ class ScoreThree extends React.Component<{}, IState> {
     });
 
     const playNext = () => setTimeout(() => {
-      console.log('next');
       this.setState({
         currentWordIndex: this.state.currentWordIndex+1,
       });
@@ -65,7 +64,7 @@ class ScoreThree extends React.Component<{}, IState> {
       if (this.state.currentWordIndex < originalPassage.length-1) {
         playNext();
       }
-    }, 500);
+    }, (Math.random() * 1000) + 500);
 
     playNext();
   }

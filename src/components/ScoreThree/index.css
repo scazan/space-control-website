@@ -1,16 +1,20 @@
 
 .scoreThree {
   font-size: 16px;
-  color: #rgba(60,60,60,0.75);
+  color: rgba(252, 249, 249, 0.45)
 }
 
 .scoreThree .play {
+  padding: 0;
   background: transparent;
   border: none;
+  border-bottom: 1px dotted rgba(252, 249, 249, 0.45);
   user-select: none;
   cursor: crosshair;
 
+  color: rgba(252, 249, 249, 0.45);
   font-size: 24px;
+
 }
 .scoreThree .play.active {
   display: none;
@@ -21,4 +25,5 @@
 }
 .scoreThree .text.active {
   display: block;
+  line-height: 1.75em;
 }
