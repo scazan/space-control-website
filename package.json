@@ -14,7 +14,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts-ts": "3.1.0",
     "serve": "^11.0.1",
-    "three": "^0.105.2"
+    "three": "^0.125.0"
   },
   "scripts": {
     "dev": "react-scripts-ts start",
